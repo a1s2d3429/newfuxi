@@ -59,7 +59,7 @@ elif identity == "经销商（收购商）":
     st.subheader("全部富硒农产品产地、单价、供货销量明细")
     dealer_df = df[["产品名称", "产品分类", "产地", "单价", "月度销量"]]
     st.dataframe(dealer_df, use_container_width=True)
-    st.info("提示：您可以横向对比不同县城同款农产品的售价，选择性价比更高的货源收购。")
+    
 
 # ---------------------- 3、农户板块：新增县域筛选，展示本县单品+汇总销量 ----------------------
 elif identity == "农户（种植户）":
@@ -74,10 +74,4 @@ elif identity == "农户（种植户）":
     # 展示本县每一款产品完整信息（名称/分类/单价/销量）
     st.dataframe(county_all_product[["产品名称", "产品分类", "单价", "月度销量"]], use_container_width=True)
 
-    st.divider()
-    st.subheader("各县农产品月度总销量统计表（全县汇总）")
-    # 保留你原本的全县总销量汇总表
-    farmer_data = df.groupby("产地")["月度销量"].sum().reset_index()
-    farmer_data.columns = ["产地", "月度销量"]
-    st.dataframe(farmer_data, use_container_width=True)
-    st.info("提示：表格里销量越高的县域，市场需求越大，优先规划种植本地热销品类，减少滞销风险。")
+
